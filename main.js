@@ -50,10 +50,3 @@ var checkForCharacter = function(character) {
     return "You've run out of guesses";
   }
 }
-  // The function should check the `chosenWord` for that character
-  // The function should return true if the character is in the given word
-  // The function should return false if the character is not in the given word
-  // The function should only be able to return true or false a certain number of times (the number stored in the `counter` variable)
-  // The function should store and console.log every letter that has been passed to this function in the `triedCharacters` array
-  // The function should store and console.log every letter in `chosenWord` that has been passed to this function in the `correctCharacters` array
-  // If every letter in `chosenWord` word has been passed to this function, console.log "you guessed it"
