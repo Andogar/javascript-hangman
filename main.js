@@ -1,3 +1,13 @@
+/****************************************************************
+
+Take input from user via button, each button corresponds to it's letter
+Push that character into the checkForCharacter function to see if the character is in the word
+Display a list of incorrect characters and correct ones
+After either 10 incorrect guesses or the word completely guessed, show the full word at the bottom
+Potentially populate the word with the correct letters underneath the letters
+
+****************************************************************/
+
 // Here are the 100 most popular words in English, as totally
 // stolen from here: https://gist.github.com/gravitymonkey/2406023
 var commonWords = [

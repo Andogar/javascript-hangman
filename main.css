@@ -14,4 +14,26 @@
   flex: 1;
   padding: 30px;
   margin-right: 5px;
+  margin-top: 10px;
+}
+
+.attempts, .correct-letters, .results{
+  height: 50px;
+  border: 1px solid black;
+  width: 80%;
+  margin: 10px auto;
+  text-align: left;
+  display: flex;
+}
+
+h2 {
+  margin-left: 10px;
+  line-height: .5;
+}
+
+.attempts > p, .correct-letters > p, .results > p {
+  line-height: 1.5;
+  margin-left: 10px;
+  margin-top: 8px;
+  font-size: 1.5rem;
 }
