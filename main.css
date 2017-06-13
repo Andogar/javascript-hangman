@@ -12,9 +12,10 @@
 
 .button {
   flex: 1;
-  padding: 30px;
+  padding: 20px;
   margin-right: 5px;
   margin-top: 10px;
+  font-size: 1.75rem;
 }
 
 .output-box{
