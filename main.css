@@ -17,7 +17,7 @@
   margin-top: 10px;
 }
 
-.attempts, .correct-letters, .results{
+.output-box{
   height: 50px;
   border: 1px solid black;
   width: 80%;
@@ -31,7 +31,7 @@ h2 {
   line-height: .5;
 }
 
-.attempts > p, .correct-letters > p, .results > p {
+.attempts, .correct-letters, .results {
   line-height: 1.5;
   margin-left: 10px;
   margin-top: 8px;
