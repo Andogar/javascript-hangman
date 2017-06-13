@@ -36,13 +36,25 @@ var chooseRandomWord = function(array) {
   return array[Math.floor(Math.random() * Math.max(array.length - 1), 0)];
 }
 var chosenWord = chooseRandomWord(commonWords);
-var answerWord = chosenWord;
-
 var letterInput = document.querySelectorAll('button');
 var correctCharactersHTML = document.querySelector(".correct-letters");
-var incorrectCharactersHTML = document.querySelector(".attempts");
 var answer = document.querySelector(".results");
 var characters = "abcdefghijklmnopqrstuvwqyz";
+var spaces = [];
+var spacesDisplay;
+
+// Sets the spaces to show how long the word is
+
+for (var i = 0; i < chosenWord.length; i++) {
+  spaces.push("_");
+  spacesDisplay = spaces.join(" ");
+  answer.innerHTML = spacesDisplay;
+}
+
+/*
+Allows the buttons to be clickable. If you click a button that is correct
+it will add the letter to a correct guesses variable
+*/
 
 for (var i = 0; i < letterInput.length; i++) {
   letterInput[i].onclick = function(event) {
@@ -61,6 +73,10 @@ for (var i = 0; i < letterInput.length; i++) {
     this.classList.add('disabled');
   }
 }
+
+
+
+
 
 var counter = 10;
 var incorrectCharacters = [];
