@@ -13,6 +13,9 @@ Display a list of incorrect characters and correct ones
 After either 10 incorrect guesses or the word completely guessed, show the full word at the bottom
 Potentially populate the word with the correct letters underneath the letters
 
+
+Think about putting the _'s as an unordered list and pushing the letters into there in
+the right order somehow
 ****************************************************************/
 
 // Here are the 100 most popular words in English, as totally
@@ -61,7 +64,6 @@ for (var i = 0; i < letterInput.length; i++) {
     var letterValue;
     var displayValue = " " + this.value;
     letterValue = this.value;
-    console.log(letterValue);
     for (var j = 0; j < chosenWord.length; j++) {
       // loops through chosen word and still holds value of letterValue
       if (chosenWord[j] == letterValue) {

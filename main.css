@@ -31,6 +31,10 @@
   color: #999;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 h2 {
   margin-left: 10px;
   line-height: .5;
