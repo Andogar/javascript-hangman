@@ -15,7 +15,7 @@
   padding: 20px;
   margin-right: 5px;
   margin-top: 10px;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 .output-box{
@@ -25,6 +25,10 @@
   margin: 10px auto;
   text-align: left;
   display: flex;
+}
+
+.disabled {
+  color: #999;
 }
 
 h2 {

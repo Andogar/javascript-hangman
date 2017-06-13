@@ -1,6 +1,13 @@
 /****************************************************************
 
 Take input from user via button, each button corresponds to it's letter
+
+make an array or string of characters of the alphabet
+When you push a button its value is a character of the alphabet
+Check to see if that character is in the array or string of characters
+If it is, take that character out of the initial array of characters and push it to the page and new array of tried characters
+If it is not, return a message saying that the letter has been tried already and to try again
+
 Push that character into the checkForCharacter function to see if the character is in the word
 Display a list of incorrect characters and correct ones
 After either 10 incorrect guesses or the word completely guessed, show the full word at the bottom
@@ -32,17 +39,26 @@ var chosenWord = chooseRandomWord(commonWords);
 var answerWord = chosenWord;
 
 var letterInput = document.querySelectorAll('button');
-var correctLettersHTML = document.querySelector(".correct-letters");
-var incorrectLettersHTML = document.querySelector(".attempts");
+var correctCharactersHTML = document.querySelector(".correct-letters");
+var incorrectCharactersHTML = document.querySelector(".attempts");
 var answer = document.querySelector(".results");
+var characters = "abcdefghijklmnopqrstuvwqyz";
 
-var incorrectCharacters = [];
 for (var i = 0; i < letterInput.length; i++) {
   letterInput[i].onclick = function(event) {
     var letterValue;
-    letterValue = " " + this.value;
-    incorrectCharacters.push(letterValue);
-    incorrectLettersHTML.innerHTML = incorrectCharacters;
+    var displayValue = " " + this.value;
+    letterValue = this.value;
+    console.log(letterValue);
+    for (var j = 0; j < chosenWord.length; j++) {
+      // loops through chosen word and still holds value of letterValue
+      if (chosenWord[j] == letterValue) {
+        correctCharacters.push(displayValue);
+        correctCharactersHTML.innerHTML = correctCharacters;
+      }
+    }
+    this.disabled = true;
+    this.classList.add('disabled');
   }
 }
 
@@ -50,7 +66,9 @@ var counter = 10;
 var incorrectCharacters = [];
 var correctCharacters = [];
 var counterCheck = 0;
-// Create a function that accepts a single character argument
+/*
+Old code code purely console logging. Keeping for now to hold onto idea of guess limit
+
 var checkForCharacter = function(character) {
   if (counterCheck <= counter) {
     for (var i = 0; i < chosenWord.length; i++) {
@@ -72,3 +90,4 @@ var checkForCharacter = function(character) {
     return "You've run out of guesses";
   }
 }
+*/
