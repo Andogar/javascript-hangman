@@ -55,10 +55,9 @@ result = function() {
     guess.innerHTML = chosenWordCharacter;
     guess.setAttribute('id', guess.innerHTML);
     guess.innerHTML = "_";
-    guess.classList.add('guess');
+    guess.setAttribute('class', 'guess');
     answer.appendChild(correctAnswer);
     correctAnswer.appendChild(guess);
-    console.log([guess]);
   }
 }
 
@@ -72,13 +71,16 @@ it will add the letter to a correct guesses variable
 for (var i = 0; i < letterInput.length; i++) {
   // Grabs all the li items and puts them in an array
   var allGuesses = document.querySelectorAll('li');
+  var counter = 10;
+  var counterCheck = 0;
+
   letterInput[i].onclick = function(event) {
     var letterValue;
     letterValue = this.value;
     for (var j = 0; j < allGuesses.length; j++) {
       // think about another if loop that checks if the innerHTML of the list is "_"
       if (allGuesses[j].id == letterValue) {
-        //give this if statement an else value to subtract from counter
+        // give this if statement an else value to subtract from counter
         allGuesses[j] .innerHTML = letterValue;
       }
     }
@@ -86,6 +88,3 @@ for (var i = 0; i < letterInput.length; i++) {
     this.classList.add('disabled');
   }
 }
-
-var counter = 10;
-var counterCheck = 0;
