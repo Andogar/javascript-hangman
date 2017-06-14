@@ -40,19 +40,29 @@ var chooseRandomWord = function(array) {
 }
 var chosenWord = chooseRandomWord(commonWords);
 var letterInput = document.querySelectorAll('button');
-var correctCharactersHTML = document.querySelector(".correct-letters");
-var answer = document.querySelector(".results");
-var characters = "abcdefghijklmnopqrstuvwqyz";
-var spaces = [];
-var spacesDisplay;
 
-// Sets the spaces to show how long the word is
-
-for (var i = 0; i < chosenWord.length; i++) {
-  spaces.push("_");
-  spacesDisplay = spaces.join(" ");
-  answer.innerHTML = spacesDisplay;
+/*
+Sets underscores for how long the word is, also sets the id of the list item
+to be the value of the character it represents
+*/
+result = function() {
+  var answer = document.querySelector(".results");
+  var correctAnswer = document.createElement("ul");
+  correctAnswer.setAttribute('id', 'word');
+  for (var i = 0; i < chosenWord.length; i++) {
+    chosenWordCharacter = chosenWord[i];
+    var guess = document.createElement("li");
+    guess.innerHTML = chosenWordCharacter;
+    guess.setAttribute('id', guess.innerHTML);
+    guess.innerHTML = "_";
+    guess.classList.add('guess');
+    answer.appendChild(correctAnswer);
+    correctAnswer.appendChild(guess);
+    console.log([guess]);
+  }
 }
+
+result();
 
 /*
 Allows the buttons to be clickable. If you click a button that is correct
@@ -60,15 +70,16 @@ it will add the letter to a correct guesses variable
 */
 
 for (var i = 0; i < letterInput.length; i++) {
+  // Grabs all the li items and puts them in an array
+  var allGuesses = document.querySelectorAll('li');
   letterInput[i].onclick = function(event) {
     var letterValue;
-    var displayValue = " " + this.value;
     letterValue = this.value;
-    for (var j = 0; j < chosenWord.length; j++) {
-      // loops through chosen word and still holds value of letterValue
-      if (chosenWord[j] == letterValue) {
-        correctCharacters.push(displayValue);
-        correctCharactersHTML.innerHTML = correctCharacters;
+    for (var j = 0; j < allGuesses.length; j++) {
+      // think about another if loop that checks if the innerHTML of the list is "_"
+      if (allGuesses[j].id == letterValue) {
+        //give this if statement an else value to subtract from counter
+        allGuesses[j] .innerHTML = letterValue;
       }
     }
     this.disabled = true;
@@ -76,36 +87,5 @@ for (var i = 0; i < letterInput.length; i++) {
   }
 }
 
-
-
-
-
 var counter = 10;
-var incorrectCharacters = [];
-var correctCharacters = [];
 var counterCheck = 0;
-/*
-Old code code purely console logging. Keeping for now to hold onto idea of guess limit
-
-var checkForCharacter = function(character) {
-  if (counterCheck <= counter) {
-    for (var i = 0; i < chosenWord.length; i++) {
-      if (character == chosenWord[i]) {
-        correctCharacters.push(character);
-        chosenWord = chosenWord.slice(0, i) + chosenWord.slice(i+1);
-        return "These characters are correct: " + correctCharacters;
-        if (chosenWord == "") {
-          return "You did it! The correct word was " + answerWord + "."
-        }
-      } else {
-        incorrectCharacters.push(character);
-        counterCheck++
-        console.log("You have tried these characters: " + incorrectCharacters);
-
-      }
-    }
-  } else {
-    return "You've run out of guesses";
-  }
-}
-*/
