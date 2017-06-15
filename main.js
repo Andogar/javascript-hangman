@@ -1,23 +1,3 @@
-/****************************************************************
-
-Take input from user via button, each button corresponds to it's letter
-
-make an array or string of characters of the alphabet
-When you push a button its value is a character of the alphabet
-Check to see if that character is in the array or string of characters
-If it is, take that character out of the initial array of characters and push it to the page and new array of tried characters
-If it is not, return a message saying that the letter has been tried already and to try again
-
-Push that character into the checkForCharacter function to see if the character is in the word
-Display a list of incorrect characters and correct ones
-After either 10 incorrect guesses or the word completely guessed, show the full word at the bottom
-Potentially populate the word with the correct letters underneath the letters
-
-
-Think about putting the _'s as an unordered list and pushing the letters into there in
-the right order somehow
-****************************************************************/
-
 // Here are the 100 most popular words in English, as totally
 // stolen from here: https://gist.github.com/gravitymonkey/2406023
 var commonWords = [
@@ -45,6 +25,7 @@ var letterInput = document.querySelectorAll('button');
 Sets underscores for how long the word is, also sets the id of the list item
 to be the value of the character it represents
 */
+
 (result = function() {
   var answer = document.querySelector(".results");
   var correctAnswer = document.createElement("ul");
@@ -69,23 +50,48 @@ it will add the letter to a correct guesses variable
 for (var i = 0; i < letterInput.length; i++) {
   // Grabs all the li items and puts them in an array
   var allGuesses = document.querySelectorAll('li');
+  var guessesLeft = document.querySelector('.guesses-left ');
+  var allButtons = document.querySelectorAll('button');
   var counter = 10;
-  var counterCheck = 0;
   var correctGuess = 0;
+  var incorrectGuess = 0;
+  guessesLeft.innerHTML = counter;
 
   letterInput[i].onclick = function(event) {
-    var letterValue;
-    letterValue = this.value;
+    var letterValue = this.value;
     for (var j = 0; j < allGuesses.length; j++) {
       if (allGuesses[j].id == letterValue) {
         allGuesses[j].innerHTML = letterValue;
         correctGuess += 1;
+        console.log(correctGuess);
+        incorrectGuess = 0;
+        if (correctGuess == chosenWord.length) {
+          counter = "You win!";
+          for (var i = 0; i < allButtons.length; i++) {
+            allButtons[i].disabled = true;
+            allButtons[i].classList.add('disabled');
+          }
+        }
+      } else {
+        incorrectGuess += 1;
+        console.log(correctGuess);
+      }
+      if (incorrectGuess == chosenWord.length) {
+        // this gets logged multiple times after one correct guess, twice after one correct guess and three times after two
+        counter -= 1;
+        console.log(correctGuess);
+        incorrectGuess = 0;
+      }
+      if (counter == 0) {
+        counter = "You lose!";
+        for (var i = 0; i < allButtons.length; i++) {
+          allButtons[i].disabled = true;
+          allButtons[i].classList.add('disabled');
+        }
       }
     }
     this.disabled = true;
     this.classList.add('disabled');
-  }
-  if (correctGuess == chosenWord.length) {
-    console.log("you win!");
+    guessesLeft.innerHTML = counter;
   }
 }

@@ -18,13 +18,23 @@
   font-size: 1.5rem;
 }
 
-.output-box{
+h1 {
+  text-align: center;
+}
+
+.output-box {
   height: 50px;
   border: 1px solid black;
   width: 80%;
   margin: 10px auto;
   text-align: left;
   display: flex;
+}
+
+.guesses-left {
+  font-size: 1.5rem;
+  margin: 12px 0 10px 10px;
+
 }
 
 .disabled {
@@ -40,8 +50,7 @@ h2 {
   line-height: .5;
 }
 
-.attempts, .correct-letters, .results {
-  line-height: 1.5;
+.results {
   margin-left: 10px;
   margin-top: 8px;
   font-size: 1.5rem;
@@ -52,6 +61,7 @@ h2 {
   margin: 0;
   padding: 0;
   font-size: 1.2em;
+  padding-bottom: 10px;
 }
 
 .guess {
