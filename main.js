@@ -45,7 +45,7 @@ var letterInput = document.querySelectorAll('button');
 Sets underscores for how long the word is, also sets the id of the list item
 to be the value of the character it represents
 */
-result = function() {
+(result = function() {
   var answer = document.querySelector(".results");
   var correctAnswer = document.createElement("ul");
   correctAnswer.setAttribute('id', 'word');
@@ -59,9 +59,7 @@ result = function() {
     answer.appendChild(correctAnswer);
     correctAnswer.appendChild(guess);
   }
-}
-
-result();
+})();
 
 /*
 Allows the buttons to be clickable. If you click a button that is correct
@@ -73,18 +71,21 @@ for (var i = 0; i < letterInput.length; i++) {
   var allGuesses = document.querySelectorAll('li');
   var counter = 10;
   var counterCheck = 0;
+  var correctGuess = 0;
 
   letterInput[i].onclick = function(event) {
     var letterValue;
     letterValue = this.value;
     for (var j = 0; j < allGuesses.length; j++) {
-      // think about another if loop that checks if the innerHTML of the list is "_"
       if (allGuesses[j].id == letterValue) {
-        // give this if statement an else value to subtract from counter
-        allGuesses[j] .innerHTML = letterValue;
+        allGuesses[j].innerHTML = letterValue;
+        correctGuess += 1;
       }
     }
     this.disabled = true;
     this.classList.add('disabled');
+  }
+  if (correctGuess == chosenWord.length) {
+    console.log("you win!");
   }
 }
